@@ -9,7 +9,7 @@ const searchSuitableWorker = asyncHandler(async (req, res) => {
     if (!latitude, !longitude, !occupation) {
         throw new apiError(403, "Data Insufficient")
     }
-    const targetCoordinates = [latitude, longitude]
+    const targetCoordinates = [longitude, latitude]
     const suitableWorkers = await Worker.find({
         occupation: occupation,
         geolocation: {
@@ -64,12 +64,12 @@ const registerWorker = asyncHandler(async (req, res) => {
         },
         geolocation:
         {
-            coordinates: [latitude, longitude]
+            coordinates: [longitude, latitude]
         },
         executive
     })
 
-    if (!worker) {
+    if (!worker || worker.length === 0) {
         throw new apiError(403, "Error registering Worker Details")
     }
 
