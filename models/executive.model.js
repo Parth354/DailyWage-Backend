@@ -42,7 +42,7 @@ const ExecutiveSchema = new Schema({
     },
     refreshToken:{
         type:String,
-    },
+    }
 
 }, {
     timestamps: true

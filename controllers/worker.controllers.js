@@ -73,6 +73,7 @@ const registerWorker = asyncHandler(async (req, res) => {
         throw new apiError(403, "Error registering Worker Details")
     }
 
+
     return res.status(200).json(
         new apiResponse(200, worker, "Worker Registered Successfully")
     )
